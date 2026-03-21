@@ -182,3 +182,28 @@ main{
     }
 }
 
+@media (prefers-color-scheme: dark) {
+    nav{
+        background-color: orangered;
+    }
+    .nav-links a{
+        color: white;
+    }
+    .nav-links a:hover{
+        background-color: orange;
+    }
+
+    .card{
+        background-color: orangered;
+    }
+    .card a{
+        color: antiquewhite;
+    }
+    .past *:not(a){
+        color: white;
+    }
+
+    main{
+        background-color: #111111;
+    }
+}
