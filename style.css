@@ -143,6 +143,8 @@ main{
     font-size: 2rem;
     padding: 1rem;
     margin-left: auto;
+}
+.fa-solid{
     color: orangered;
 }
 
@@ -182,8 +184,11 @@ main{
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     nav{
+        background-color: orangered;
+    }
+    .nav-links{
         background-color: orangered;
     }
     .nav-links a{
@@ -191,6 +196,9 @@ main{
     }
     .nav-links a:hover{
         background-color: orange;
+    }
+    .fa-solid{
+        color: white;
     }
 
     .card{
