@@ -21,7 +21,7 @@ nav{
 
     display: inline-flex;
 
-    background-color: #f2e3cb;
+    background-color: antiquewhite;
 }
 
 .nav-links{
@@ -93,7 +93,7 @@ a{
     /* margin-top: 5rem; */
     font-size: large;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/banner.jpg');
-    background-size: contain;
+    background-size: cover;
     /* background-attachment: fixed; */
     color: white;
 
