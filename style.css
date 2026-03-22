@@ -3,8 +3,6 @@
     padding: 0;
     transition: 0.2s ease-in-out;
     box-sizing: border-box;
-
-    color: white;
 }
 
 body{
@@ -48,16 +46,16 @@ nav img{
 
     border-radius: 1em;
 
-    color: orangered;
+    color: #fc923b;
     background-color: transparent;
 }
 .nav-links a:hover{
-    background-color: sienna;
+    background-color: #fc923b;
     color: white;
 }
 .nav-links a:active{
     transition: none;
-    box-shadow: inset 0 0 5em 0.3em black;
+    box-shadow: inset 0 0 5em 0.3em #fc923b;
 
     color: white;
     background-color: #5A6896;
@@ -66,13 +64,13 @@ nav img{
 }
 
 a{
-    color: orangered;
+    color: #fc923b;
 }
 .anchor-button{
     font-size: 1.1em;
     padding: 0.8em 1.1em 0.8em 1.1em;
 
-    background-color: orangered;
+    background-color: #fc923b;
     color: white;
 
     border-radius: 2rem;
@@ -95,7 +93,6 @@ a{
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/banner.jpg');
     background-size: cover;
     /* background-attachment: fixed; */
-    color: white;
 
     padding-top: 4rem;
     min-height: max(37vh, 23rem);
@@ -105,6 +102,9 @@ a{
     position: fixed;
     top: 5rem;
     overflow: auto;
+}
+.hero *{
+    color: white;
 }
 
 .past{
@@ -127,7 +127,7 @@ a{
 
 main{
     width: 100%;
-    background-color: orange;
+    background-color: #fc923b;
     position: relative;
     border-radius: 2rem 2rem 0 0;
     margin-top: calc(max(37vh, 23rem) + 3rem);
@@ -145,7 +145,7 @@ main{
     margin-left: auto;
 }
 .fa-solid{
-    color: orangered;
+    color: #fc923b;
 }
 
 @media (max-width: 888px) {
@@ -160,12 +160,14 @@ main{
         position: absolute;
         top: 5rem;
         left: 0;
-        background-color: #f2e3cb;
+        background-color: antiquewhite;
 
         transform: scaleY(0);
         transform-origin: top;
         pointer-events: none;
         transition: transform 0.4s ease-in;
+
+        border-radius: 0rem 0rem 2rem 2rem;
     }
     .nav-links a{
         width: 100%;
@@ -186,23 +188,23 @@ main{
 
 @media (prefers-color-scheme: dark) {
     nav{
-        background-color: orangered;
+        background-color: #fc923b;
     }
     .nav-links{
-        background-color: orangered;
+        background-color: #fc923b;
     }
     .nav-links a{
         color: white;
     }
     .nav-links a:hover{
-        background-color: orange;
+        background-color: #fc923b;
     }
     .fa-solid{
         color: white;
     }
 
     .card{
-        background-color: orangered;
+        background-color: #fc923b;
     }
     .card a{
         color: antiquewhite;
