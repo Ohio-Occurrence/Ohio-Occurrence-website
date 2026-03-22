@@ -9,6 +9,10 @@ body{
     font-family: sans-serif;
     min-width: fit-content;
 }
+.content{
+    max-width: 80rem;
+    margin: auto;
+}
 
 nav{
     position: fixed;
@@ -18,8 +22,10 @@ nav{
     height: 5rem;
 
     display: inline-flex;
+    /* border-radius: 2rem 2rem 2rem 2rem; */
 
-    background-color: antiquewhite;
+    background-color: #fc923b;
+    box-shadow: 0 10px 30px black;
 }
 
 .nav-links{
@@ -46,21 +52,20 @@ nav img{
 
     border-radius: 1em;
 
-    color: #fc923b;
+    color: white;
     background-color: transparent;
 }
 .nav-links a:hover{
-    background-color: #fc923b;
-    color: white;
+    background-color: antiquewhite;
+    color: #fc923b;
 }
 .nav-links a:active{
-    transition: none;
-    box-shadow: inset 0 0 5em 0.3em #fc923b;
+    box-shadow: inset 0 0 0.5em 0.3em #fc923b;
 
-    color: white;
-    background-color: #5A6896;
+    /* color: white;
+    background-color: orangered; */
 
-    transition: 0.2s ease-out;;
+    transition: 0.1s ease-out;;
 }
 
 a{
@@ -94,9 +99,7 @@ a{
     background-size: cover;
     /* background-attachment: fixed; */
 
-    padding-top: 4rem;
     min-height: max(37vh, 23rem);
-    top: 0;
     z-index: 0;
 
     position: fixed;
@@ -133,6 +136,8 @@ main{
     margin-top: calc(max(37vh, 23rem) + 3rem);
 
     z-index: 1;
+
+    box-shadow: 0 -10px 30px black;
 }
 
 .nav-toggle {
@@ -145,7 +150,7 @@ main{
     margin-left: auto;
 }
 .fa-solid{
-    color: #fc923b;
+    color: antiquewhite;
 }
 
 @media (max-width: 888px) {
@@ -160,7 +165,7 @@ main{
         position: absolute;
         top: 5rem;
         left: 0;
-        background-color: antiquewhite;
+        background-color: #fc923b;
 
         transform: scaleY(0);
         transform-origin: top;
