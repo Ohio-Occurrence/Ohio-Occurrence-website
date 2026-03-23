@@ -8,10 +8,13 @@
 body{
     font-family: sans-serif;
     min-width: fit-content;
+
+    background-color: #fc923b;
 }
 .content{
     max-width: 80rem;
     margin: auto;
+    margin-top: 7rem;
 }
 
 nav{
@@ -25,7 +28,7 @@ nav{
     /* border-radius: 2rem 2rem 2rem 2rem; */
 
     background-color: #fc923b;
-    box-shadow: 0 10px 30px black;
+    box-shadow: 0 0px 30px black;
 }
 
 .nav-links{
@@ -95,7 +98,7 @@ a{
 
     /* margin-top: 5rem; */
     font-size: large;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/banner.jpg');
+    background: linear-gradient(rgba(0,0,0,0.66), rgba(0,0,0,0.66)), url('images/banner.jpg');
     background-size: cover;
     /* background-attachment: fixed; */
 
@@ -106,7 +109,7 @@ a{
     top: 5rem;
     overflow: auto;
 }
-.hero *{
+.hero *:not(a){
     color: white;
 }
 
@@ -137,7 +140,7 @@ main{
 
     z-index: 1;
 
-    box-shadow: 0 -10px 30px black;
+    box-shadow: 0 -20px 20px RGBA(0, 0, 0, 0.5);
 }
 
 .nav-toggle {
@@ -151,6 +154,35 @@ main{
 }
 .fa-solid{
     color: antiquewhite;
+}
+
+footer{
+    margin: auto;
+    text-align: center;
+    font-size: 3rem;
+}
+footer a{
+    text-decoration: none;
+    margin: 0.5rem;
+}
+footer a:hover{
+    transform: scale(1.3);
+}
+footer a:active{
+    transform: scale(0.7);
+    transition: 0.1s ease-out;
+}
+
+iframe{
+    display: block;
+    margin: auto;
+    width: 98%;
+	max-width: max(53em, 103vh);
+    aspect-ratio: 16 / 9;
+}
+
+ul{
+    list-style-position: inside
 }
 
 @media (max-width: 888px) {
@@ -191,25 +223,13 @@ main{
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    nav{
-        background-color: #fc923b;
-    }
-    .nav-links{
-        background-color: #fc923b;
-    }
-    .nav-links a{
-        color: white;
-    }
-    .nav-links a:hover{
-        background-color: #fc923b;
-    }
-    .fa-solid{
+/* @media (prefers-color-scheme: dark) {
+    main{
         color: white;
     }
 
     .card{
-        background-color: #fc923b;
+        background-color: #140c00;
     }
     .card a{
         color: antiquewhite;
@@ -217,8 +237,4 @@ main{
     .past *:not(a){
         color: white;
     }
-
-    main{
-        background-color: #111111;
-    }
-}
+} */
