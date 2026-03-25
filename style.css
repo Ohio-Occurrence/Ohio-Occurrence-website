@@ -227,6 +227,13 @@ ul{
     .content{
         padding: 0 3vw;
     }
+
+    .anchor-button:hover{
+        transform: none;
+    }
+    .anchor-button:active{
+        transform: scale(0.7);
+    }
 }
 
 /* @media (prefers-color-scheme: dark) {
