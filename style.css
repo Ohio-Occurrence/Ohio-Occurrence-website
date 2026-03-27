@@ -120,7 +120,7 @@ a{
     filter: brightness(0.34);
     z-index: 0;
 }
-.hero > *:not(.hero-bg) {
+.hero > *:not(.hero-slideshow) {
     position: relative;
     z-index: 1;
 }
