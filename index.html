@@ -38,7 +38,7 @@
         </nav>
 
         <div class="hero">
-            <video class="hero-bg" autoplay muted loop playsinline>
+            <video class="hero-slideshow" autoplay muted loop playsinline>
                 <!-- <source src="images/montage_av1.mp4" type="video/mp4; codecs=av01.0.05M.08"> -->
                 <source src="images/montage.mp4" type="video/mp4">
             </video>
@@ -106,4 +106,13 @@
             <a href="mailto:ohiooccurrence@gmail.com" class="fa fa-envelope" style="color: #FFD700;"></a>
         </footer>
     </body>
+
+    <script type="text/javascript">
+        const video = document.querySelector('.hero-slideshow');
+        if (video.canPlayType('video/mp4; codecs="av01.0.05M.08"') === 'probably') {
+            video.src = 'images/montage_av1.mp4';
+        } else {
+            video.src = 'images/montage.mp4';
+}
+    </script>
 </html>
