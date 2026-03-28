@@ -105,5 +105,15 @@
             <a href="https://www.instagram.com/ohiooccurrence" target="_blank" class="fa-brands fa-instagram" style="color: df3472"></a>
             <a href="mailto:ohiooccurrence@gmail.com" class="fa fa-envelope" style="color: #FFD700;"></a>
         </footer>
+
+        <script type="text/javascript">
+            const hero = document.querySelector('.hero');
+            const main = document.querySelector('main');
+
+            new ResizeObserver(() => {
+                const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
+                main.style.marginTop = (hero.offsetTop + hero.offsetHeight - overlap) + 'px';
+            }).observe(hero);
+        </script>
     </body>
 </html>

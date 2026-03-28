@@ -148,7 +148,7 @@ main{
     background-color: #fc923b;
     position: relative;
     border-radius: 2rem 2rem 0 0;
-    margin-top: calc(max(37vh, 23rem) + 3rem);
+    /* margin-top: calc(max(37vh, 23rem) + 3rem); */
 
     z-index: 1;
 
