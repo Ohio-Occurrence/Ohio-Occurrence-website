@@ -109,8 +109,15 @@
             const main = document.querySelector('main');
 
             new ResizeObserver(() => {
+                const signUpButton = document.querySelector('.hero .anchor-button');
+                const buttonBoundingRectangle = signUpButton.getBoundingClientRect();
                 const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
-                main.style.marginTop = (hero.offsetTop + hero.scrollHeight - parseFloat(getComputedStyle(main).borderTopLeftRadius)) + 'px';
+                const paddingBottom = parseFloat(getComputedStyle(hero).paddingBottom);
+                
+                const fromHero = hero.offsetTop + hero.scrollHeight - overlap;
+                const fromButton = buttonBoundingRectangle.bottom + window.scrollY + paddingBottom - overlap;
+                
+                main.style.marginTop = Math.max(fromHero, fromButton) + 'px';
             }).observe(hero);
         </script>
     </body>

@@ -105,18 +105,23 @@ a{
     padding: 5vw;
     font-size: large;
 
-    min-height: max(37vh, 23rem);
+    min-height: 37vh;
+    max-height: 77vh;
     z-index: 0;
     
     overflow: auto;
 }
 .hero-slideshow {
     position: absolute;
+
     top: 0;
     left: 0;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
     filter: brightness(0.34);
     z-index: 0;
 }
