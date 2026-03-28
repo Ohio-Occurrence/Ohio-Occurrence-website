@@ -112,7 +112,7 @@
 
             new ResizeObserver(() => {
                 const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
-                main.style.marginTop = (hero.offsetTop + hero.offsetHeight - overlap) + 'px';
+                main.style.marginTop = (hero.offsetTop + hero.scrollHeight - parseFloat(getComputedStyle(main).borderTopLeftRadius)) + 'px';
             }).observe(hero);
         </script>
     </body>
