@@ -40,10 +40,12 @@
                 <source src="images/montage.webm" type="video/webm">
                 <source src="images/montage.mp4" type="video/mp4">
             </video>
-            <h1>Ohio Occurrence Cincinnati 2026</h1>
-            <p>Join us for our annual Ohio convergence this July 24th - 26th and help fight for all sentient beings.</p>
-            <br/>
-            <a class="anchor-button" href="https://forms.gle/9fciWprwSa7d9n7r6" target="_blank">Sign up</a>
+            <div class="hero-content">
+                <h1>Ohio Occurrence Cincinnati 2026</h1>
+                <p>Join us for our annual Ohio convergence this July 24th - 26th and help fight for all sentient beings.</p>
+                <br/>
+                <a class="anchor-button" href="https://forms.gle/9fciWprwSa7d9n7r6" target="_blank">Sign up</a>
+            </div>
         </div>
         <main>
             <div class="content">
@@ -108,16 +110,18 @@
             const hero = document.querySelector('.hero');
             const main = document.querySelector('main');
 
+            history.scrollRestoration = 'manual';
+            window.scrollTo(0, 0);
+
             new ResizeObserver(() => {
-                const signUpButton = document.querySelector('.hero .anchor-button');
-                const buttonBoundingRectangle = signUpButton.getBoundingClientRect();
+                const heroContent = document.querySelector('.hero-content');
+                const contentRect = heroContent.getBoundingClientRect();
                 const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
-                const paddingBottom = parseFloat(getComputedStyle(hero).paddingBottom);
                 
-                const fromHero = hero.offsetTop + hero.scrollHeight - overlap;
-                const fromButton = buttonBoundingRectangle.bottom + window.scrollY + paddingBottom - overlap;
+                const fromHero = hero.offsetTop + hero.offsetHeight - overlap;
+                const fromContent = contentRect.bottom + window.scrollY - overlap;
                 
-                main.style.marginTop = Math.max(fromHero, fromButton) + 'px';
+                main.style.marginTop = Math.max(fromHero, fromContent) + 'px';
             }).observe(hero);
         </script>
     </body>

@@ -102,13 +102,22 @@ a{
     position: fixed;
     top: 5rem;
     width: 100%;
-    padding: 5vw;
+    padding: 0;
     font-size: large;
 
     min-height: 37vh;
     max-height: 77vh;
     z-index: 0;
     
+    overflow: clip;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    
+    max-height: calc(55vh - 10vw);
+    padding: 5vw;
+
     overflow: auto;
 }
 .hero-slideshow {
