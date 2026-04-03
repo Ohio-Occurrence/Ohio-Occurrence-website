@@ -116,10 +116,11 @@
             new ResizeObserver(() => {
                 const heroContent = document.querySelector('.hero-content');
                 const contentRect = heroContent.getBoundingClientRect();
+                const heroTop = parseFloat(getComputedStyle(hero).top);
                 const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
                 
-                const fromHero = hero.offsetTop + hero.offsetHeight - overlap;
-                const fromContent = contentRect.bottom + window.scrollY - overlap;
+                const fromHero = heroTop + hero.offsetHeight - overlap;
+                const fromContent = heroTop + contentRect.height - overlap;
                 
                 main.style.marginTop = Math.max(fromHero, fromContent) + 'px';
             }).observe(hero);
