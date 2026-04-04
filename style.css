@@ -228,7 +228,7 @@ ul{
         margin-top: -3px;
     }
 
-    .hamburger-line {
+    .vegan-burger-line {
         display: block;
         position: absolute;
 
@@ -242,29 +242,29 @@ ul{
         transition: transform 0.4s cubic-bezier(0.04, 0.73, 0.38, 1);
     }
 
-    .hamburger-line:nth-child(1) {
+    .vegan-burger-line:nth-child(1) {
         top: 25%;
     }
 
-    .hamburger-line:nth-child(2) {
+    .vegan-burger-line:nth-child(2) {
         top: 50%;
         transition: opacity 0.4s cubic-bezier(0.04, 0.73, 0.38, 1);
     }
 
-    .hamburger-line:nth-child(3) {
+    .vegan-burger-line:nth-child(3) {
         top: 75%;
     }
 
-    .nav-open .hamburger-line:nth-child(1) {
+    .nav-open .vegan-burger-line:nth-child(1) {
         top: 50%;
         transform: rotate(45deg);
     }
 
-    .nav-open .hamburger-line:nth-child(2) {
+    .nav-open .vegan-burger-line:nth-child(2) {
         opacity: 0;
     }
 
-    .nav-open .hamburger-line:nth-child(3) {
+    .nav-open .vegan-burger-line:nth-child(3) {
         top: 50%;
         transform: rotate(-45deg);
     }
