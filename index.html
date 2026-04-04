@@ -117,20 +117,20 @@
         const heroContent = document.querySelector('.hero-content');
         const contentDiv = document.querySelector('.content');
 
-        var fixedMaxHeight = window.innerHeight * 0.77;
+        var fixedMaxHeight = screen.height * 0.77;
 
         initialViewpointSet();
 
         /**
          * Resets the viewpoint to avoid scroll rememberance.
          */
-        function initialViewpointSet() {
+        function initialViewpointSet(){
             history.scrollRestoration = 'manual';
             window.scrollTo(0, 0);
 
             new ResizeObserver(updateLayout).observe(heroContent);
-            window.addEventListener('resize', function() {
-                fixedMaxHeight = window.innerHeight * 0.77;
+            window.addEventListener('resize', function(){
+                fixedMaxHeight = screen.height * 0.77;
                 updateLayout();
             });
             updateLayout();
@@ -139,7 +139,7 @@
         /**
          * Sets the hero to fixed positioning for normal zoom levels.
          */
-        function setFixedMode() {
+        function setFixedMode(){
             hero.style.position = 'fixed';
             hero.style.top = '5rem';
             hero.style.marginTop = '0';
@@ -156,7 +156,7 @@
         /**
          * Sets the positioning to relative for when people like Rohith have their font size set to elephant.
          */
-        function setRelativeMode() {
+        function setRelativeMode(){
             hero.style.position = 'relative';
             hero.style.top = '0';
             hero.style.marginTop = '5rem';
@@ -174,7 +174,7 @@
         /**
          * Sets the layout based on the zoom level.
          */
-        function updateLayout() {
+        function updateLayout(){
             const contentRect = heroContent.getBoundingClientRect();
 
             if (contentRect.height > fixedMaxHeight) {
