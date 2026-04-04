@@ -20,6 +20,9 @@ function closeNavWhenClickingOutside(){
  * Opens the vegan burger menu.
  */
 function openBurger() {
+    // We need to set the animation here because if set in the CSS it triggers when shrinking the page, causing a visual anomaly. I do not know why.
+    document.querySelector('.nav-links').style.transition = 'transform 0.4s cubic-bezier(0.04, 0.73, 0.38, 1)';
+
     document.querySelector('.nav-links').classList.add('open');
     document.body.classList.add('nav-open');
     document.querySelectorAll('.hero a, main a, footer a').forEach(link => {
@@ -31,6 +34,8 @@ function openBurger() {
  * Closes the vegan burger menu.
  */
 function closeBurger() {
+    document.querySelector('.nav-links').style.transition = 'transform 0.4s ease-in';
+
     document.querySelector('.nav-links').classList.remove('open');
     document.body.classList.remove('nav-open');
     document.querySelectorAll('.hero a, main a, footer a').forEach(link => {
@@ -41,7 +46,7 @@ function closeBurger() {
 /**
  * Toggles the state of the vegan burger menu.
  */
-function toggleNavigation() {
+function toggleBurger() {
     if (document.body.classList.contains('nav-open')) {
         closeBurger();
     } else {
