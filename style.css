@@ -59,7 +59,7 @@ nav img{
     font-size: x-large;
     text-decoration: none;
 
-    border-radius: 1em;
+    border-radius: 33px;
 
     color: white;
     background-color: transparent;
@@ -87,7 +87,7 @@ a{
     background-color: #fc923b;
     color: white;
 
-    border-radius: 2rem;
+    border-radius: 33px;
     display: inline-block;
 }
 .anchor-button:hover{
@@ -143,7 +143,7 @@ a{
     background-color: antiquewhite;
     color: black;
 
-    border-radius: 1em;
+    border-radius: 33px;
     padding: 2rem;
 }
 .card img, .card video{
@@ -158,7 +158,7 @@ main{
     width: 100%;
     background-color: #fc923b;
     position: relative;
-    border-radius: 22px 2px 0 0;
+    border-radius: 33px 33px 0 0;
     margin-top: calc(max(37vh, 23rem) + 3rem);
 
     z-index: 1;
@@ -226,7 +226,7 @@ ul{
         pointer-events: none;
         transition: transform 0.4s ease-in;
 
-        border-radius: 0rem 0rem 2rem 2rem;
+        border-radius: 0rem 0rem 33px 33px;
 
         max-height: 77vh;
         overflow: auto;
