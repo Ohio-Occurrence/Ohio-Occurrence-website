@@ -227,6 +227,9 @@ ul{
         transition: transform 0.4s ease-in;
 
         border-radius: 0rem 0rem 2rem 2rem;
+
+        max-height: 77vh;
+        overflow: auto;
     }
     .nav-links a{
         width: 100%;
