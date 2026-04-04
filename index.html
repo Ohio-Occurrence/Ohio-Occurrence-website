@@ -117,12 +117,6 @@
         const heroContent = document.querySelector('.hero-content');
         const contentDiv = document.querySelector('.content');
 
-        const debug = document.createElement('div');
-        debug.style.cssText = 'position:fixed;top:0;left:0;z-index:9999;background:red;color:white;padding:10px;font-size:14px;';
-        document.body.appendChild(debug);
-
-        let updating = false;
-
         initialViewpointSet();
 
         /**
@@ -176,19 +170,13 @@
          * Sets the layout based on the zoom level.
          */
         function updateLayout() {
-            if (updating) {
-                return;
-            }
-            updating = true;
-
-            const wasRelative = hero.style.position === 'relative';
-            const heroRect = hero.getBoundingClientRect();
             const contentRect = heroContent.getBoundingClientRect();
+            const fixedMaxHeight = window.innerHeight * 0.77;
 
-            if (contentRect.height > heroRect.height) {
+            if (contentRect.height > fixedMaxHeight) {
                 setRelativeMode();
-                debug.textContent = 'MODE:relative cH:' + contentRect.height.toFixed(1) + ' hH:' + heroRect.height.toFixed(1);
             } else {
+                const wasRelative = hero.style.position === 'relative';
                 setFixedMode();
 
                 if (wasRelative) {
@@ -196,21 +184,20 @@
                 }
 
                 const signUpButton = document.querySelector('.hero .anchor-button');
+                const heroRect = hero.getBoundingClientRect();
 
-                const scrollY = Math.max(0, window.scrollY);
+                const heroTop = parseFloat(getComputedStyle(hero).top);
                 const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
 
                 const buttonRect = signUpButton.getBoundingClientRect();
-                const fromButton = buttonRect.bottom + scrollY;
-                const fromHero = heroRect.bottom + scrollY - overlap;
-                const finalMargin = Math.max(fromButton, fromHero);
+                const buttonDocBottom = heroTop + (buttonRect.bottom - heroRect.top);
+                const heroDocBottom = heroTop + heroRect.height;
 
-                main.style.marginTop = finalMargin + 'px';
+                const fromButton = buttonDocBottom;
+                const fromHero = heroDocBottom - overlap;
 
-                debug.textContent = 'MODE:fixed hB:' + heroRect.bottom.toFixed(1) + ' bB:' + buttonRect.bottom.toFixed(1) + ' mT:' + finalMargin.toFixed(1) + ' sY:' + scrollY;
+                main.style.marginTop = Math.max(fromButton, fromHero) + 'px';
             }
-
-            updating = false;
         }
     </script>
 </html>
