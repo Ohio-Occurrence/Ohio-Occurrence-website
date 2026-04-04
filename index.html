@@ -141,7 +141,9 @@
                 hero.style.overflow = 'clip';
                 hero.style.maxHeight = '77vh';
                 hero.style.minHeight = '37vh';
+
                 contentDiv.style.marginTop = '';
+
                 main.style.borderRadius = '33px 33px 0 0';
                 main.style.boxShadow = '0 -20px 20px rgba(0, 0, 0, 0.5)';
             }
@@ -156,10 +158,12 @@
                 hero.style.overflow = 'visible';
                 hero.style.maxHeight = 'none';
                 hero.style.minHeight = '0';
-                contentDiv.style.marginTop = '0';
+
                 main.style.marginTop = '0';
                 main.style.borderRadius = '0';
                 main.style.boxShadow = 'none';
+
+                contentDiv.style.marginTop = '0';
             }
 
             /**
@@ -178,12 +182,16 @@
                     if (wasRelative) {
                         window.scrollTo(0, 0);
                     }
+
+                    const signUpButton = document.querySelector('.hero .anchor-button');
+
                     const scrollY = Math.max(0, window.scrollY);
                     const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
-                    const signUpButton = document.querySelector('.hero .anchor-button');
+                    
                     const buttonRect = signUpButton.getBoundingClientRect();
                     const fromButton = buttonRect.bottom + scrollY;
                     const fromHero = heroRect.bottom + scrollY - overlap;
+
                     main.style.marginTop = Math.max(fromButton, fromHero) + 'px';
                 }
             }
