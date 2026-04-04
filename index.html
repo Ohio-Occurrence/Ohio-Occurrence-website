@@ -117,6 +117,8 @@
         const heroContent = document.querySelector('.hero-content');
         const contentDiv = document.querySelector('.content');
 
+        var fixedMaxHeight = window.innerHeight * 0.77;
+
         initialViewpointSet();
 
         /**
@@ -127,7 +129,10 @@
             window.scrollTo(0, 0);
 
             new ResizeObserver(updateLayout).observe(heroContent);
-            window.addEventListener('resize', updateLayout);
+            window.addEventListener('resize', function() {
+                fixedMaxHeight = window.innerHeight * 0.77;
+                updateLayout();
+            });
             updateLayout();
         }
 
@@ -171,7 +176,6 @@
          */
         function updateLayout() {
             const contentRect = heroContent.getBoundingClientRect();
-            const fixedMaxHeight = window.innerHeight * 0.77;
 
             if (contentRect.height > fixedMaxHeight) {
                 setRelativeMode();
