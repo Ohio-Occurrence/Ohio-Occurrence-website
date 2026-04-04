@@ -109,22 +109,63 @@
         <script type="text/javascript">
             const hero = document.querySelector('.hero');
             const main = document.querySelector('main');
+            const heroContent = document.querySelector('.hero-content');
+            const contentDiv = document.querySelector('.content');
 
             history.scrollRestoration = 'manual';
             window.scrollTo(0, 0);
 
-            new ResizeObserver(() => {
-                const heroContent = document.querySelector('.hero-content');
-                const contentRect = heroContent.getBoundingClientRect();
+            function setFixedMode() {
+                hero.style.position = 'fixed';
+                hero.style.top = '5rem';
+                hero.style.marginTop = '0';
+                hero.style.overflow = 'clip';
+                hero.style.maxHeight = '77vh';
+                hero.style.minHeight = '37vh';
+                contentDiv.style.marginTop = '';
+                main.style.borderRadius = '22px 22px 0 0';
+                main.style.boxShadow = '0 -20px 20px rgba(0, 0, 0, 0.5)';
+            }
+
+            function setRelativeMode() {
+                hero.style.position = 'relative';
+                hero.style.top = '0';
+                hero.style.marginTop = '5rem';
+                hero.style.overflow = 'visible';
+                hero.style.maxHeight = 'none';
+                hero.style.minHeight = '0';
+                contentDiv.style.marginTop = '0';
+                main.style.marginTop = '0';
+                main.style.borderRadius = '0';
+                main.style.boxShadow = 'none';
+            }
+
+            function updateLayout() {
+                const wasRelative = hero.style.position === 'relative';
+                setFixedMode();
+
                 const heroRect = hero.getBoundingClientRect();
-                const heroTop = parseFloat(getComputedStyle(hero).top);
-                const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
-                
-                const fromHero = heroTop + heroRect.height - overlap;
-                const fromContent = heroTop + contentRect.height - overlap;
-                
-                main.style.marginTop = Math.max(fromHero, fromContent) + 'px';
-            }).observe(hero);
+                const contentRect = heroContent.getBoundingClientRect();
+
+                if (contentRect.height > heroRect.height) {
+                    setRelativeMode();
+                } else {
+                    if (wasRelative) {
+                        window.scrollTo(0, 0);
+                    }
+                    const scrollY = Math.max(0, window.scrollY);
+                    const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
+                    const signUpButton = document.querySelector('.hero .anchor-button');
+                    const buttonRect = signUpButton.getBoundingClientRect();
+                    const fromButton = buttonRect.bottom + scrollY;
+                    const fromHero = heroRect.bottom + scrollY - overlap;
+                    main.style.marginTop = Math.max(fromButton, fromHero) + 'px';
+                }
+            }
+
+            new ResizeObserver(updateLayout).observe(heroContent);
+            window.addEventListener('resize', updateLayout);
+            updateLayout();
         </script>
     </body>
 </html>
