@@ -111,96 +111,106 @@
     </body>
 
     <script src="vegan_burger.js?version=2.0" type="text/javascript"></script>
-        <script type="text/javascript">
-            const hero = document.querySelector('.hero');
-            const main = document.querySelector('main');
-            const heroContent = document.querySelector('.hero-content');
-            const contentDiv = document.querySelector('.content');
+    <script type="text/javascript">
+        const hero = document.querySelector('.hero');
+        const main = document.querySelector('main');
+        const heroContent = document.querySelector('.hero-content');
+        const contentDiv = document.querySelector('.content');
 
-            initialViewpointSet();
+        const debug = document.createElement('div');
+        debug.style.cssText = 'position:fixed;top:0;left:0;z-index:9999;background:red;color:white;padding:10px;font-size:14px;';
+        document.body.appendChild(debug);
 
-            /**
-             * Resets the viewpoint to avoid scroll rememberance.
-             */
-            function initialViewpointSet(){
-                history.scrollRestoration = 'manual';
-                window.scrollTo(0, 0);
+        let updating = false;
 
-                new ResizeObserver(updateLayout).observe(heroContent);
-                window.addEventListener('resize', updateLayout);
-                updateLayout();
+        initialViewpointSet();
+
+        /**
+         * Resets the viewpoint to avoid scroll rememberance.
+         */
+        function initialViewpointSet() {
+            history.scrollRestoration = 'manual';
+            window.scrollTo(0, 0);
+
+            new ResizeObserver(updateLayout).observe(heroContent);
+            window.addEventListener('resize', updateLayout);
+            updateLayout();
+        }
+
+        /**
+         * Sets the hero to fixed positioning for normal zoom levels.
+         */
+        function setFixedMode() {
+            hero.style.position = 'fixed';
+            hero.style.top = '5rem';
+            hero.style.marginTop = '0';
+            hero.style.overflow = 'clip';
+            hero.style.maxHeight = '77vh';
+            hero.style.minHeight = '37vh';
+
+            contentDiv.style.marginTop = '';
+
+            main.style.borderRadius = '33px 33px 0 0';
+            main.style.boxShadow = '0 -20px 20px rgba(0, 0, 0, 0.5)';
+        }
+
+        /**
+         * Sets the positioning to relative for when people like Rohith have their font size set to elephant.
+         */
+        function setRelativeMode() {
+            hero.style.position = 'relative';
+            hero.style.top = '0';
+            hero.style.marginTop = '5rem';
+            hero.style.overflow = 'visible';
+            hero.style.maxHeight = 'none';
+            hero.style.minHeight = '0';
+
+            main.style.marginTop = '0';
+            main.style.borderRadius = '0';
+            main.style.boxShadow = 'none';
+
+            contentDiv.style.marginTop = '0';
+        }
+
+        /**
+         * Sets the layout based on the zoom level.
+         */
+        function updateLayout() {
+            if (updating) {
+                return;
             }
+            updating = true;
 
-            /**
-             * Sets the hero to fixed positioning for normal zoom levels.
-             */
-            function setFixedMode() {
-                hero.style.position = 'fixed';
-                hero.style.top = '5rem';
-                hero.style.marginTop = '0';
-                hero.style.overflow = 'clip';
-                hero.style.maxHeight = '77vh';
-                hero.style.minHeight = '37vh';
+            const wasRelative = hero.style.position === 'relative';
+            const heroRect = hero.getBoundingClientRect();
+            const contentRect = heroContent.getBoundingClientRect();
 
-                contentDiv.style.marginTop = '';
+            if (contentRect.height > heroRect.height) {
+                setRelativeMode();
+                debug.textContent = 'MODE:relative cH:' + contentRect.height.toFixed(1) + ' hH:' + heroRect.height.toFixed(1);
+            } else {
+                setFixedMode();
 
-                main.style.borderRadius = '33px 33px 0 0';
-                main.style.boxShadow = '0 -20px 20px rgba(0, 0, 0, 0.5)';
-            }
-
-            /**
-             * Sets the positioning to relative for when people like Rohith have their font size set to elephant.
-             */
-            function setRelativeMode() {
-                hero.style.position = 'relative';
-                hero.style.top = '0';
-                hero.style.marginTop = '5rem';
-                hero.style.overflow = 'visible';
-                hero.style.maxHeight = 'none';
-                hero.style.minHeight = '0';
-
-                main.style.marginTop = '0';
-                main.style.borderRadius = '0';
-                main.style.boxShadow = 'none';
-
-                contentDiv.style.marginTop = '0';
-            }
-
-            /**
-             * Sets the layout based on the zoom level.
-             */
-            function updateLayout() {
-                if (updating) {
-                    return;
-                }
-                updating = true;
-
-                const wasRelative = hero.style.position === 'relative';
-                const heroRect = hero.getBoundingClientRect();
-                const contentRect = heroContent.getBoundingClientRect();
-
-                if (contentRect.height > heroRect.height) {
-                    setRelativeMode();
-                } else {
-                    setFixedMode();
-
-                    if (wasRelative) {
-                        window.scrollTo(0, 0);
-                    }
-
-                    const signUpButton = document.querySelector('.hero .anchor-button');
-
-                    const scrollY = Math.max(0, window.scrollY);
-                    const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
-                    
-                    const buttonRect = signUpButton.getBoundingClientRect();
-                    const fromButton = buttonRect.bottom + scrollY;
-                    const fromHero = heroRect.bottom + scrollY - overlap;
-
-                    main.style.marginTop = Math.max(fromButton, fromHero) + 'px';
+                if (wasRelative) {
+                    window.scrollTo(0, 0);
                 }
 
-                updating = false;
+                const signUpButton = document.querySelector('.hero .anchor-button');
+
+                const scrollY = Math.max(0, window.scrollY);
+                const overlap = parseFloat(getComputedStyle(main).borderTopLeftRadius);
+
+                const buttonRect = signUpButton.getBoundingClientRect();
+                const fromButton = buttonRect.bottom + scrollY;
+                const fromHero = heroRect.bottom + scrollY - overlap;
+                const finalMargin = Math.max(fromButton, fromHero);
+
+                main.style.marginTop = finalMargin + 'px';
+
+                debug.textContent = 'MODE:fixed hB:' + heroRect.bottom.toFixed(1) + ' bB:' + buttonRect.bottom.toFixed(1) + ' mT:' + finalMargin.toFixed(1) + ' sY:' + scrollY;
             }
-        </script>
+
+            updating = false;
+        }
+    </script>
 </html>
