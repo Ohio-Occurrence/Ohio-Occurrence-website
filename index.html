@@ -38,7 +38,7 @@
         </nav>
 
         <div class="hero">
-            <video class="hero-slideshow" autoplay muted loop playsinline poster="images/banner.jpg">
+            <video id="montage" class="hero-slideshow" autoplay muted loop playsinline poster="images/banner.jpg">
                 <source src="images/montage.webm" type="video/webm">
                 <source src="images/montage.mp4" type="video/mp4">
             </video>
@@ -121,6 +121,18 @@
         var lastWidth = window.innerWidth;
 
         initialViewpointSet();
+        resumePlaybackOnReturnBecauseCrapple();
+
+        /**
+         * On iOS, when leaving the browser and coming back, the slideshow pauses. This mitigates that.
+         */
+        function resumePlaybackOnReturnBecauseCrapple(){
+            document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                document.querySelector('.hero-slideshow').play();
+            }
+        });
+        }
 
         /**
          * Resets the viewpoint to avoid scroll rememberance.
