@@ -166,7 +166,7 @@ main{
     box-shadow: 0 -20px 20px RGBA(0, 0, 0, 0.5);
 }
 
-.nav-toggle {
+.vegan-burger {
     display: none;
     background: none;
 
@@ -213,7 +213,7 @@ ul{
 }
 
 @media (max-width: 888px) {
-    .nav-toggle {
+    .vegan-burger {
         display: block;
         position: relative;
 
@@ -285,6 +285,7 @@ ul{
         transition: transform 0.4s ease-in;
 
         border-radius: 0rem 0rem 33px 33px;
+        box-shadow: 0 15px 15px 0 #111111;
 
         max-height: 77vh;
         overflow-x: auto;
@@ -301,7 +302,7 @@ ul{
         transition: transform 0.4s cubic-bezier(0.04, 0.73, 0.38, 1);
     }
 
-    .nav-open .hero, .nav-open main{
+    .nav-open > :not(nav){
         filter: blur(11px);
         transition: 0.4s cubic-bezier(0.04, 0.73, 0.38, 1);
     }

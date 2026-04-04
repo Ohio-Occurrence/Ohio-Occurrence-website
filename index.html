@@ -23,7 +23,7 @@
     <body>
         <nav>
             <img src="images/logo.png" alt="Ohio Occurrence Logo" class="logo">
-            <button class="nav-toggle" onclick="toggleNavButton()">
+            <button class="vegan-burger" onclick="toggleNavigation()">
                 <span class="vegan-burger-line"></span>
                 <span class="vegan-burger-line"></span>
                 <span class="vegan-burger-line"></span>
@@ -108,7 +108,9 @@
             <a href="https://www.instagram.com/ohiooccurrence" target="_blank" class="fa-brands fa-instagram" style="color: df3472"></a>
             <a href="mailto:ohiooccurrence@gmail.com" class="fa fa-envelope" style="color: #FFD700;"></a>
         </footer>
+    </body>
 
+    <script src="vegan_burger.js?version=1.0" type="text/javascript"></script>
         <script type="text/javascript">
             const hero = document.querySelector('.hero');
             const main = document.querySelector('main');
@@ -117,6 +119,9 @@
 
             initialViewpointSet();
 
+            /**
+             * Resets the viewpoint to avoid scroll rememberance.
+             */
             function initialViewpointSet(){
                 history.scrollRestoration = 'manual';
                 window.scrollTo(0, 0);
@@ -126,6 +131,9 @@
                 updateLayout();
             }
 
+            /**
+             * Sets the hero to fixed positioning for normal zoom levels.
+             */
             function setFixedMode() {
                 hero.style.position = 'fixed';
                 hero.style.top = '5rem';
@@ -138,6 +146,9 @@
                 main.style.boxShadow = '0 -20px 20px rgba(0, 0, 0, 0.5)';
             }
 
+            /**
+             * Sets the positioning to relative for when people like Rohith have their font size set to elephant.
+             */
             function setRelativeMode() {
                 hero.style.position = 'relative';
                 hero.style.top = '0';
@@ -151,16 +162,19 @@
                 main.style.boxShadow = 'none';
             }
 
+            /**
+             * Sets the layout based on the zoom level.
+             */
             function updateLayout() {
                 const wasRelative = hero.style.position === 'relative';
-                setFixedMode();
-
                 const heroRect = hero.getBoundingClientRect();
                 const contentRect = heroContent.getBoundingClientRect();
 
                 if (contentRect.height > heroRect.height) {
                     setRelativeMode();
                 } else {
+                    setFixedMode();
+
                     if (wasRelative) {
                         window.scrollTo(0, 0);
                     }
@@ -173,11 +187,5 @@
                     main.style.marginTop = Math.max(fromButton, fromHero) + 'px';
                 }
             }
-
-            function toggleNavButton() {
-                document.querySelector('.nav-links').classList.toggle('open');
-                document.body.classList.toggle('nav-open');
-            }
         </script>
-    </body>
 </html>
