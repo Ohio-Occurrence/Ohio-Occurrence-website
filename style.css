@@ -272,7 +272,9 @@ ul{
     .nav-links {
         display: flex;
         flex-direction: column;
+
         width: 100%;
+
         position: absolute;
         top: 5rem;
         left: 0;
@@ -285,11 +287,13 @@ ul{
         border-radius: 0rem 0rem 33px 33px;
 
         max-height: 77vh;
-        overflow: auto;
+        overflow-x: auto;
     }
     .nav-links a{
         width: 100%;
         text-align: center;
+
+        margin: 0;
     }
     .nav-links.open {
         transform: scaleY(1);
