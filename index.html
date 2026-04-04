@@ -170,6 +170,11 @@
              * Sets the layout based on the zoom level.
              */
             function updateLayout() {
+                if (updating) {
+                    return;
+                }
+                updating = true;
+
                 const wasRelative = hero.style.position === 'relative';
                 const heroRect = hero.getBoundingClientRect();
                 const contentRect = heroContent.getBoundingClientRect();
@@ -194,6 +199,8 @@
 
                     main.style.marginTop = Math.max(fromButton, fromHero) + 'px';
                 }
+
+                updating = false;
             }
         </script>
 </html>
