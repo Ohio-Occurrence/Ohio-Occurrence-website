@@ -39,6 +39,15 @@
 
         <div class="content">
             <div class="card">
+                <h1>What you need</h1>
+                <p>
+                    <ul>
+                        <li>The <a id="signal-link" href="https://signal.org" target="_blank">Signal app</a> on your <b>phone</b>.</li>
+                    </ul>
+                </p>
+            </div>
+            <br/>
+            <div class="card">
                 <h1>Rules</h1>
                 <p>For the rules of the Occurrence, <a href="rules.html" target="_blank">click here</a>.</p>
             </div>
@@ -119,4 +128,16 @@
     </body>
 
     <script src="vegan_burger.js?version=2.0" type="text/javascript"></script>
+    <script>
+        let userAgent = window.navigator.userAgent.toLowerCase();
+        if(userAgent.includes('windows')){
+            document.getElementById('signal-link').href = 'https://apps.microsoft.com/detail/XP89119P9F2PCQ';
+        }else if(userAgent.includes('ios') || userAgent.includes('iphone') || userAgent.includes('ipod') || userAgent.includes('ipad')){
+            document.getElementById('signal-link').href = 'https://apps.apple.com/us/app/signal-private-messenger/id874139669';
+        }else if(userAgent.includes('android')){
+            document.getElementById('signal-link').href = 'https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms';
+        }else if(userAgent.includes('mac')){
+            document.getElementById('signal-link').href = 'https://signal.org/download/macos/';
+        }
+    </script>
 </html>
