@@ -81,6 +81,14 @@ nav img{
 a{
     color: #fc923b;
 }
+a:hover{
+    color: blue;
+    transition: 0.15s ease-out;
+}
+a:active{
+    color: green;
+}
+
 .anchor-button{
     font-size: 1.1em;
     padding: 0.8em 1.1em 0.8em 1.1em;
@@ -96,6 +104,14 @@ a{
     transform: scale(1.2);
 }
 .anchor-button:active{
+    transform: scale(0.7);
+    transition: 0.1s ease-out;
+}
+
+.logo:hover{
+    transform: scale(1.4);
+}
+.logo:active{
     transform: scale(0.7);
     transition: 0.1s ease-out;
 }
