@@ -360,9 +360,6 @@ ul{
         padding: 0 3vw;
     }
 
-    .anchor-button:hover{
-        transform: none;
-    }
     .anchor-button:active{
         transform: scale(0.7);
     }
