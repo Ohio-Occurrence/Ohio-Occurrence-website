@@ -133,18 +133,20 @@
         /**
          * On iOS, when leaving the browser and coming back, the slideshow pauses. This mitigates that.
          */
-        function resumePlaybackOnReturnBecauseCrapple(){
-            document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) {
-                document.querySelector('.hero-slideshow').play();
-            }
-        });
+        function resumePlaybackOnReturnBecauseCrapple() {
+            const video = document.querySelector('.hero-slideshow');
 
-            window.addEventListener('pageshow', function(event) {
-                if (event.persisted) {
-                    document.querySelector('.hero-slideshow').play();
+            function tryPlay() {
+                if (video.paused) {
+                    video.play().catch(() => {});
                 }
+            }
+
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) tryPlay();
             });
+            window.addEventListener('pageshow', tryPlay);
+            window.addEventListener('focus', tryPlay);
         }
 
         /**
